@@ -18,6 +18,20 @@ class LinkedList
 
 	// this function insert node at the given place
 
+	public void insertAfter(Node prev_node, int new_data){
+
+		if(prev_node== null ){
+			System.out.println("The given previous nopde can not be null");
+			return;
+		}
+
+		Node new_node  = new Node(new_data);
+
+		new_node.next = prev_node.next;
+
+		prev_node.next = new_node;
+
+	}
 
 	// This fucntion is the part of linked list class. It insert the new node at front of linked list
 	public void push(int new_data){
@@ -56,6 +70,8 @@ class LinkedList
 		second.next = third; // link second to third
 
 		llist.push(44);
+
+		llist.insertAfter(second, 67);
 		// System.out.print(llist.head.data);
 		llist.printList();
 
