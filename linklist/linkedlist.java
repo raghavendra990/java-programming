@@ -15,6 +15,17 @@ class LinkedList
 		Node(int d) {data=d;}
 	}
 
+
+	// this function insert node at the given place
+
+
+	// This fucntion is the part of linked list class. It insert the new node at front of linked list
+	public void push(int new_data){
+		Node new_node = new Node(new_data);
+		new_node.next = head;
+		head = new_node;
+	}
+
 	// this fucntion print content of linked list
 
 	public void printList(){
@@ -44,7 +55,7 @@ class LinkedList
 
 		second.next = third; // link second to third
 
-
+		llist.push(44);
 		// System.out.print(llist.head.data);
 		llist.printList();
 
