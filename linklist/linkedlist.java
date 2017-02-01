@@ -56,6 +56,35 @@ class LinkedList
 		return;
 	}
 
+	// delete the key from the linked list
+
+	public void deleteNode(int key){
+		if(head != null && head.data == key){
+			head  = head.next;
+			return;
+		}
+
+		Node current_node = head;
+
+		Node prev_node=null;
+
+		while(current_node != null && current_node.data !=key){
+
+			System.out.println(current_node.data);
+			prev_node = current_node;
+			current_node = current_node.next;
+		}
+
+		if (current_node == null ){
+			System.out.print("key is not present in the list");
+
+		}
+
+		prev_node.next = current_node.next;
+
+
+	}
+
 	// This fucntion is the part of linked list class. It insert the new node at front of linked list
 	public void push(int new_data){
 		Node new_node = new Node(new_data);
@@ -97,6 +126,8 @@ class LinkedList
 		llist.insertAfter(second, 67);
 		llist.append(99);
 		// System.out.print(llist.head.data);
+
+		llist.deleteNode(67); 
 		llist.printList();
 
 	}
