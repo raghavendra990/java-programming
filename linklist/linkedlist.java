@@ -33,6 +33,29 @@ class LinkedList
 
 	}
 
+	// append finction insert the new node at the end
+
+	public void append(int new_data){
+
+		Node new_node = new Node(new_data);
+
+		if (head == null){
+			head = new Node(new_data);
+			return;
+		}
+
+		new_node.next = null;
+
+		Node temp = head;
+		while(temp.next != null){
+			temp = temp.next;
+		}
+
+		temp.next  = new_node;
+
+		return;
+	}
+
 	// This fucntion is the part of linked list class. It insert the new node at front of linked list
 	public void push(int new_data){
 		Node new_node = new Node(new_data);
@@ -72,6 +95,7 @@ class LinkedList
 		llist.push(44);
 
 		llist.insertAfter(second, 67);
+		llist.append(99);
 		// System.out.print(llist.head.data);
 		llist.printList();
 
