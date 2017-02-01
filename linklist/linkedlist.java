@@ -92,6 +92,36 @@ class LinkedList
 		head = new_node;
 	}
 
+	// delete node at position
+	public void deleteNodePos(int position){
+
+		Node current_node = head , prev_node=null; 
+
+		if(position<0){
+			System.out.print("position should be > or =  zero");
+			return;
+		}
+		else if(position==0){
+			head  = current_node.next;
+		}
+		else{
+			int count =0;
+			while(current_node!=null && count<position){
+				count++;
+				prev_node = current_node;
+				current_node = current_node.next;
+			}
+
+			if (current_node == null){
+				System.out.print("position can not be greater than the number of elements in the list");
+				return;
+			}
+
+			prev_node.next = current_node.next;
+		}
+
+	}
+
 	// this fucntion print content of linked list
 
 	public void printList(){
@@ -127,7 +157,7 @@ class LinkedList
 		llist.append(99);
 		// System.out.print(llist.head.data);
 
-		llist.deleteNode(67); 
+		llist.deleteNodePos(0); 
 		llist.printList();
 
 	}
