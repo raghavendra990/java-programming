@@ -152,6 +152,57 @@ class BinaryTree
 			return count;
 	}
 
+	//  print spiral: function to print in the spiral form
+	void printSpiral()
+	{
+		int h = height(root);
+
+		boolean ltr = false;
+
+		for (int i = 1; i<= h; i++){
+			printGivenLevelSpiral(root,i , ltr);
+			ltr	  = !ltr;
+		}
+	}
+
+	// function to print a element of a given level in the spiral format
+	void printGivenLevelSpiral(Node node , int level , boolean ltr){
+
+		if (node == null){
+			return ;
+		}
+
+		if (level == 1){
+			System.out.print(node.key + " ");
+		}
+		else if (level > 1){
+			if (ltr == false){
+				printGivenLevelSpiral(node.left , level-1,ltr);
+				printGivenLevelSpiral(node.right, level -1,ltr);
+			}
+			else{
+				printGivenLevelSpiral(node.right, level -1, ltr);
+				printGivenLevelSpiral(node.left , level-1,ltr);
+			}
+		}
+	}
+
+	// sizeOF fucntion to calculate the size of the tree
+
+	int size(Node node)
+	{	
+		if (node == null)
+		{
+			return 0;
+		}
+
+		int sizeLeft = size(node.left);
+		int sizeRight = size(node.right);
+
+		return sizeLeft + sizeRight +1;
+
+	}
+
 	public static void main(String[] args) {
 		
 		BinaryTree tree = new BinaryTree();
@@ -178,5 +229,12 @@ class BinaryTree
 		System.out.println("\n");
 		tree.printLevelOrder();
 		System.out.println(tree.countLeaf(tree.root));
+		System.out.println("\n");
+		tree.printSpiral();
+		System.out.println("\n");
+		System.out.println(tree.size(tree.root));
+		
+
+
 	}
 }
